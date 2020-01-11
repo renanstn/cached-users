@@ -17,7 +17,7 @@ Exercício do processo seletivo da Instruct
   - `python -m venv .venv`
 - Ative o ambiente virtual
   - Windows: `.venv\Scripts\activate`
-  - Linux: `source .venv\bin\activate`
+  - Linux: `source .venv/bin/activate`
 - Instale as dependências
   - `pip install -r requirements.txt`
 - Execute os testes
