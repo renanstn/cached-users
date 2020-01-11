@@ -9,3 +9,18 @@ Exercício do processo seletivo da Instruct
 - [ ] Documentar e fazer um passo-a-passo de como instalar e utilizar
 - [ ] Otimizar, se possível
 - [ ] Adicionar o contribuinte
+
+## Como utilizar
+- Clone o projeto
+  - `git clone https://github.com/Doc-McCoy/cached-users.git`
+- Inicialize um ambiente virtual
+  - `python -m venv .venv`
+- Ative o ambiente virtual
+  - Windows: `.venv\Scripts\activate`
+  - Linux: `source .venv\bin\activate`
+- Instale as dependências
+  - `pip install -r requirements.txt`
+- Execute os testes
+  - `python test.py`
+- Utilização do script
+  - `python src/main.py <username>`
