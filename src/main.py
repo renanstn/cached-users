@@ -1,18 +1,6 @@
-import os
 import sys
-import csv
-import requests
-
-
-def get_data(url):
-    data = requests.get(url)
-    return data.json()
-
-
-def find_user_in_data(username, data):
-    for user in data:
-        if user['username'] == username:
-            return user
+import csv_cache
+import api
 
 
 def get_user(user):
@@ -28,39 +16,29 @@ def get_hemisphere(lat):
     return 'norte' if float(lat) > 0 else 'sul'
 
 
-def save_cache(user_data):
-    arquivo_ja_existe = os.path.exists('src/cache.csv')
-    with open('src/cache.csv', mode='a', newline='') as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=user_data.keys())
-        if not arquivo_ja_existe:
-            writer.writeheader()
-        writer.writerow(user_data)
-
-
-def check_cache(user):
-    if not os.path.exists('src/cache.csv'):
-        return False
-    with open('src/cache.csv', mode='r') as csv_file:
-        reader = csv.DictReader(csv_file)
-        for user_cached in reader:
-            if user_cached['username'] == user:
-                return get_user(user_cached)
+def print_user(user):
+    print('email: {}\nwebsite: {}\nhemisfério: {}'.format(
+        user['email'],
+        user['website'],
+        user['hemisferio']
+    ))
 
 
 if __name__ == '__main__':
-
     if len(sys.argv) > 1:
         username = sys.argv[1]
-        url = 'https://jsonplaceholder.typicode.com/users'
+        cache = csv_cache.CsvCache()
+        api = api.Api()
 
-        user_in_cache = check_cache(username)
+        user_in_cache = cache.check_cache(username)
 
         if user_in_cache:
-            print('essa info veio do cache')
-            print(user_in_cache)
+            user = get_user(user_in_cache)
+            print_user(user)
+
         else:
-            dados = get_data(url)
-            user = find_user_in_data(username, dados)
+            dados = api.get_data()
+            user = api.find_user(username)
 
             if not user:
                 print("o usuário que você buscou não existe")
@@ -69,10 +47,9 @@ if __name__ == '__main__':
             user_hemisphere = get_hemisphere(user['address']['geo']['lat'])
             user['hemisferio'] = user_hemisphere
             user_data = get_user(user)
-            save_cache(user_data)
+            cache.save_cache(user_data)
 
-            print('essa info foi buscada')
-            print(user_data)
+            print_user(user_data)
 
     else:
         print("passe um username")

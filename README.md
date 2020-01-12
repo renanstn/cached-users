@@ -3,14 +3,15 @@ Exercício do processo seletivo da Instruct
 
 ## TODO
 - [x] Implementar o código e fazer funcionar
-- [ ] Organizar o código
+- [x] Organizar o código
 - [ ] Verificar se o código está no padrão PEP8
 - [ ] Escrever os testes
-- [ ] Documentar e fazer um passo-a-passo de como instalar e utilizar
+- [x] Documentar e fazer um passo-a-passo de como instalar e utilizar
 - [ ] Otimizar, se possível
 - [ ] Adicionar o contribuinte
 
 ## Como utilizar
+Em seu terminal, siga os seguintes passos:
 - Clone o projeto
   - `git clone https://github.com/Doc-McCoy/cached-users.git`
 - Inicialize um ambiente virtual
