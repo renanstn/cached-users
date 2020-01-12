@@ -1,27 +1,7 @@
 import sys
 import csv_cache
 import api
-
-
-def get_user(user):
-    return {
-        'username': user['username'],
-        'email': user['email'],
-        'website': user['website'],
-        'hemisferio': user['hemisferio']
-    }
-
-
-def get_hemisphere(lat):
-    return 'norte' if float(lat) > 0 else 'sul'
-
-
-def print_user(user):
-    print('email: {}\nwebsite: {}\nhemisfério: {}'.format(
-        user['email'],
-        user['website'],
-        user['hemisferio']
-    ))
+from helpers import get_hemisphere, get_user, print_user
 
 
 if __name__ == '__main__':
@@ -44,8 +24,8 @@ if __name__ == '__main__':
                 print("o usuário que você buscou não existe")
                 sys.exit(1)
 
-            user_hemisphere = get_hemisphere(user['address']['geo']['lat'])
-            user['hemisferio'] = user_hemisphere
+            hemisphere = get_hemisphere(user['address']['geo']['lat'])
+            user['hemisphere'] = hemisphere
             user_data = get_user(user)
             cache.save_cache(user_data)
 
