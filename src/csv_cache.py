@@ -5,7 +5,7 @@ import csv
 class CsvCache:
 
     def __init__(self):
-        self.cache_file = 'cache.csv'
+        self.cache_file = os.path.abspath(os.getcwd()) + '/cache.csv'
 
     def save_cache(self, user_data):
         file_exists = os.path.exists(self.cache_file)

@@ -22,6 +22,6 @@ Em seu terminal, siga os seguintes passos:
 - Instale as dependências
   - `pip install -r requirements.txt`
 - Execute os testes
-  - `python test.py`
+  - `python -m unittest discover -s ./src/`
 - Utilização do script
   - `python src/main.py <username>`
