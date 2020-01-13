@@ -12,8 +12,9 @@ Exercício do processo seletivo da Instruct
 
 ## Como utilizar
 Em seu terminal, siga os seguintes passos:
-- Clone o projeto
+- Clone o projeto e o acesse
   - `git clone https://github.com/Doc-McCoy/cached-users.git`
+  - `cd cached-users`
 - Inicialize um ambiente virtual
   - `python -m venv .venv`
 - Ative o ambiente virtual
