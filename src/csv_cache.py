@@ -8,6 +8,7 @@ class CsvCache:
         self.cache_file = os.path.abspath(os.getcwd()) + '/cache.csv'
 
     def save_cache(self, user_data):
+        '''Armazena um usuário no cache CSV'''
         file_exists = os.path.exists(self.cache_file)
 
         with open(self.cache_file, mode='a', newline='') as csv_file:
@@ -19,6 +20,7 @@ class CsvCache:
             writer.writerow(user_data)
 
     def check_cache(self, user):
+        '''Busca no cache CSV o user solicitado'''
         if not os.path.exists(self.cache_file):
             return False
 
