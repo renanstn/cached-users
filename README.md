@@ -8,6 +8,8 @@ Este programa recebe como entrada um **username**, e retorna o *e-mail*, *websit
 
 As buscas são feitas [nessa](https://jsonplaceholder.typicode.com/users) API.
 
+Para melhor performance, o script utiliza um arquivo CSV como cache, caso o usuário busque o mesmo username repetidas vezes.
+
 ## Como utilizar
 Em seu terminal, siga os seguintes passos:
 - Clone o projeto e o acesse
